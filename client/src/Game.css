@@ -1,0 +1,11 @@
+.Game {
+    height: 100%;
+}
+.Cockpit {
+    height: 20%;
+}
+.Cards {
+    height: 80%;
+    display: grid;
+    grid: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
+}

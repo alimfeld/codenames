@@ -1,0 +1,89 @@
+.Card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    background: bisque;
+    font-size: 2em;
+    font-weight: bold;
+    user-select: none;
+    margin: 0.2em;
+    cursor: pointer;
+    transition: background-color 3s ease;
+}
+
+.Card.Key {
+    border: 0.5em solid;
+}
+
+.Card.Red {
+    background: var(--red);
+    color: var(--red-hc);
+}
+
+.Card.Red.Key {
+    background: white;
+    color: var(--red);
+}
+
+.Card.Red.Contacted {
+    color: var(--red);
+}
+
+.Card.Red.Contacted:hover {
+    color: var(--red-lc);
+}
+
+.Card.Blue {
+    background: var(--blue);
+    color: var(--blue-hc);
+}
+
+.Card.Blue.Key {
+    background: white;
+    color: var(--blue);
+}
+
+.Card.Blue.Contacted {
+    color: var(--blue);
+}
+
+.Card.Blue.Contacted:hover {
+    color: var(--blue-lc);
+}
+
+.Card.Assassin {
+    background: var(--assassin);
+    color: var(--assassin-hc);
+}
+
+.Card.Assassin.Key {
+    background: white;
+    color: var(--assassin);
+}
+
+.Card.Assassin.Contacted {
+    color: var(--assassin);
+}
+
+.Card.Assassin.Contacted:hover {
+    color: var(--assassin-lc);
+}
+
+.Card.Bystander {
+    background: var(--bystander);
+    color: var(--bystander-hc);
+}
+
+.Card.Bystander.Key {
+    background: white;
+    color: var(--bystander);
+}
+
+.Card.Bystander.Contacted {
+    color: var(--bystander);
+}
+
+.Card.Bystander.Contacted:hover {
+    color: var(--bystander-lc);
+}
