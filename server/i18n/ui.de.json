@@ -1,0 +1,15 @@
+{
+    "ai.choice": "Deine Rolle?",
+    "ai.choice.spymaster": "Ermittler",
+    "ai.choice.fieldOperative": "Geheimdienstchef",
+    "clue.choice": "Hinweis anfordern",
+    "clue.choice.conservative": "Konservativ",
+    "clue.choice.moderate": "Moderat",
+    "clue.choice.aggressive": "Aggressiv",
+    "clue.prompt": "Gib einen Hinweis",
+    "clue.hint": "z.B. Bus 2",
+    "guess.action.reveal": "Kontakt aufnehmen",
+    "turn.action.pass": "Zug beenden",
+    "game.action.new": "Neues Spiel",
+    "game.message.winner": "Team {} gewinnt!"
+}
