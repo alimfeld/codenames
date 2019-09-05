@@ -1,6 +1,6 @@
 {
   "short_name": "Codenames",
-  "name": "Play Codenames against software which uses word embeddings.",
+  "name": "Play Codenames against software which uses a word embedding model.",
   "icons": [
     {
       "src": "favicon.ico",
