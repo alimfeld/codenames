@@ -16,7 +16,7 @@ using [React](https://reactjs.org).
 
 ## Prerequisites
 
-* python & pip (Python 2 and 3 should work both fine)
+* python3 & pip3
 * node & npm
 
 ## Setup
@@ -27,15 +27,14 @@ using [React](https://reactjs.org).
 * Install client dependencies:
   `codenames/client$ npm install`
 * Download a pre-trained binary [fastText](https://fasttext.cc) model from
-  https://fasttext.cc/docs/en/crawl-vectors.html and decompress it to
-  `codenames\server\i18n`
+  https://fasttext.cc/docs/en/crawl-vectors.html to `codenames\server\i18n`
 
-Note: Only the german binary model is supported for now: `cc.de.300.bin`
+Note: Only the german binary model is supported for now: `cc.de.300.bin.gz`
 
 ## Run the applications
 
 * Start the server:
-  `codenames/server$ export FLASK_APP=server.py && python -m flask run`
+  `codenames/server$ export FLASK_APP=server.py && python3 -m flask run`
 * Start the client:
   `codenames/client$ npm start`
 * Open http://localhost:3000 in your web browser

@@ -1,8 +1,13 @@
 from random import sample
 from itertools import combinations
+from concurrent.futures import ThreadPoolExecutor
 import gensim
 
-model = gensim.models.fasttext.load_facebook_vectors('i18n/cc.de.300.bin')
+def load_model():
+    return gensim.models.fasttext.load_facebook_vectors('i18n/cc.de.300.bin.gz')
+
+executor = ThreadPoolExecutor(max_workers=1)
+model = executor.submit(load_model)
 all_codenames = [line.rstrip('\n') for line in open('i18n/cn.de.txt')]
 
 def codenames():
@@ -18,7 +23,7 @@ def clue(our_agents, their_agents=[], bystanders=[], assassin=None, previous_clu
     for r in range (min(min_related, len(our_agents)), min(max_related, len(our_agents)) + 1):
         positive_combinations = list(combinations(our_agents, r))
         for positive in positive_combinations:
-            results = model.most_similar(positive=positive, negative=negative, restrict_vocab=100000)
+            results = model.result().most_similar(positive=positive, negative=negative, restrict_vocab=100000)
             for result in results:
                 word = result[0]
                 candidate = {}
@@ -35,7 +40,7 @@ def guess(codenames, word, number):
     for codename in codenames:
         guess = {}
         guess['codename'] = codename
-        guess['similarity'] = model.similarity(codename, word).item()
+        guess['similarity'] = model.result().similarity(codename, word).item()
         guesses.append(guess)
     guesses.sort(key=lambda g: g['similarity'], reverse=True)
     return guesses[0: number]

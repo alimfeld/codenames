@@ -1,0 +1,5 @@
+/server/__pycache__
+/server/i18n/*.gz
+
+/client/build
+/client/node_modules
