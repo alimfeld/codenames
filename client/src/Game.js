@@ -1,14 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import Cockpit from './Cockpit';
 import Card from './Card';
+import Thinking from './Thinking';
 import shuffle from './shuffle';
 import { AGENT, OPPONENT, AI, STATE } from './constants';
 import './Game.css';
 
 function Game() {
 
-    const [game, setGame] = useState();
     const [texts, setTexts] = useState();
+    const [engineReady, setEngineReady] = useState(false);
+    const [game, setGame] = useState();
+    
+    useEffect(() => {
+        fetch('/api/texts')
+            .then(res => res.json())
+            .then(texts => {
+                setTexts(texts);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (!texts && !engineReady) {
+            let timeout;
+            const check = () => {
+                fetch('/api/ready')
+                    .then(res => res.json())
+                    .then(ready => {
+                        if (ready) {
+                            setEngineReady(true);
+                            setup();
+                        } else {
+                            timeout = setTimeout(check, 5000);
+                        }
+                    });
+            }
+            check();
+            return () => {
+                if (timeout) {
+                    clearTimeout(timeout);
+                }
+            }
+        }
+    });
 
     const setup = () => {
         fetch('/api/codenames')
@@ -195,17 +229,15 @@ function Game() {
         setGame(updatedGame);
     }
 
-    useEffect(() => {
-        setup();
-        fetch('/api/texts')
-            .then(res => res.json())
-            .then(texts => {
-                setTexts(texts);
-            });
-    }, []);
-
-    if (!game || !texts) {
-        return (<div></div>);
+    if (!texts) {
+        return (<></>);
+    }
+    if (!game) {
+        return (
+            <div className="Waiting">
+                <div>{texts['game.message.gettingReady']}</div>
+                <Thinking/>
+            </div>);
     }
     return (
         <div className="Game">

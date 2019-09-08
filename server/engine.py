@@ -3,17 +3,20 @@ from itertools import combinations
 from concurrent.futures import ThreadPoolExecutor
 import gensim
 
-def load_model():
-    return gensim.models.fasttext.load_facebook_vectors('i18n/cc.de.300.bin.gz')
 
-executor = ThreadPoolExecutor(max_workers=1)
-model = executor.submit(load_model)
+model = ThreadPoolExecutor(max_workers=1).submit(
+    lambda: gensim.models.fasttext.load_facebook_vectors('i18n/cc.de.300.bin.gz'))
 all_codenames = [line.rstrip('\n') for line in open('i18n/cn.de.txt')]
 
 def codenames():
     return sample(all_codenames, 25)
 
+def ready():
+    return model.done();
+
 def clue(our_agents, their_agents=[], bystanders=[], assassin=None, previous_clues=[], min_related=2, max_related=3):
+    if (not model.done()):
+        return None
     negative = []
     if assassin is not None:
         negative.append(assassin)
@@ -36,6 +39,8 @@ def clue(our_agents, their_agents=[], bystanders=[], assassin=None, previous_clu
     return (filtered_candidates if len(filtered_candidates) > 0 else candidates)[0]
 
 def guess(codenames, word, number):
+    if (not model.done()):
+        return None
     guesses = []
     for codename in codenames:
         guess = {}

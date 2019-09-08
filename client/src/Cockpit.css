@@ -47,3 +47,11 @@ input, button {
     border-radius: 0.2em;
 }
 
+.Red .Thinking div {
+    background: var(--red-hc);
+}
+
+.Blue .Thinking div {
+    background: var(--blue-hc);
+}
+

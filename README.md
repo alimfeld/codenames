@@ -23,7 +23,7 @@ using [React](https://reactjs.org).
 
 * Clone this repo
 * Install server dependencies:
-  `codenames/server$ pip install -r requirements.txt`
+  `codenames/server$ pip3 install -r requirements.txt`
 * Install client dependencies:
   `codenames/client$ npm install`
 * Download a pre-trained binary [fastText](https://fasttext.cc) model from
@@ -39,6 +39,6 @@ Note: Only the german binary model is supported for now: `cc.de.300.bin.gz`
   `codenames/client$ npm start`
 * Open http://localhost:3000 in your web browser
 
-Note: The server takes a long time to start while loading the huge fastText
+Note: The server takes a long time to get ready while loading the huge fastText
 model into memory.
 

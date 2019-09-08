@@ -11,5 +11,6 @@
     "guess.action.reveal": "Kontakt aufnehmen",
     "turn.action.pass": "Zug beenden",
     "game.action.new": "Neues Spiel",
-    "game.message.winner": "Team {} gewinnt!"
+    "game.message.winner": "Team {} gewinnt!",
+    "game.message.gettingReady": "Etwas Geduld bitte, bin noch am Wörter sortieren"
 }

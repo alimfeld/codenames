@@ -11,6 +11,10 @@ def texts():
 def codenames():
     return jsonify(engine.codenames())
 
+@app.route('/api/ready')
+def ready():
+    return jsonify(engine.ready())
+
 @app.route('/api/clue', methods=['POST'])
 def clue():
     content = request.json
