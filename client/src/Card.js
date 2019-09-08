@@ -4,7 +4,7 @@ import './Card.css';
 function Card({ game, agent, guessIndex }) {
 
     const classes = ['Card'];
-    const isKey = game.ai && game.ai.fieldOperative;
+    const isKey = (game.ai && game.ai.fieldOperative) || game.winner;
     if (agent.madeContact || isKey) {
         classes.push(agent.identity);
     }
