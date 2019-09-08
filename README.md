@@ -42,3 +42,17 @@ Note: Only the german binary model is supported for now: `cc.de.300.bin.gz`
 Note: The server takes a long time to get ready while loading the huge fastText
 model into memory.
 
+# Docker
+
+A Dockerfile is provided to create a self-contained image with:
+* [nginx](https://nginx.org) front server delivering the static client assets
+  and reverse proxying to the app server
+* [Gunicorn](https://gunicorn.org) app server running the Python backend
+
+To create a Docker image run:
+`codenames$ docker build -t codenames:latest .`
+
+To start the Docker container run:
+`$ docker run -p 8080:80 codenames:latest`
+
+Note: This will bind the exposed port 80 to your host port 8080.
